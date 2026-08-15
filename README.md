@@ -1,0 +1,21 @@
+# quic-go
+
+quic-go is an implementation of the QUIC protocol ([RFC 9000](https://datatracker.ietf.org/doc/html/rfc9000), [RFC 9001](https://datatracker.ietf.org/doc/html/rfc9001), [RFC 9002](https://datatracker.ietf.org/doc/html/rfc9002)) in Go. It has support for HTTP/3 ([RFC 9114](https://datatracker.ietf.org/doc/html/rfc9114)), including QPACK ([RFC 9204](https://datatracker.ietf.org/doc/html/rfc9204)) and HTTP Datagrams ([RFC 9297](https://datatracker.ietf.org/doc/html/rfc9297)).
+
+In addition to these base RFCs, it also implements the following RFCs:
+
+* Unreliable Datagram Extension ([RFC 9221](https://datatracker.ietf.org/doc/html/rfc9221))
+* Datagram Packetization Layer Path MTU Discovery (DPLPMTUD, [RFC 8899](https://datatracker.ietf.org/doc/html/rfc8899))
+* QUIC Version 2 ([RFC 9369](https://datatracker.ietf.org/doc/html/rfc9369))
+* QUIC Event Logging using qlog ([draft-ietf-quic-qlog-main-schema](https://datatracker.ietf.org/doc/draft-ietf-quic-qlog-main-schema/) and [draft-ietf-quic-qlog-quic-events](https://datatracker.ietf.org/doc/draft-ietf-quic-qlog-quic-events/))
+* QUIC Stream Resets with Partial Delivery ([draft-ietf-quic-reliable-stream-reset](https://datatracker.ietf.org/doc/html/draft-ietf-quic-reliable-stream-reset-07))
+* WebTransport over HTTP/3 ([draft-ietf-webtrans-http3](https://datatracker.ietf.org/doc/draft-ietf-webtrans-http3/))
+
+
+## Vendor
+- `.` github.com/quic-go/quic-go v0.61.0 (with the fork's fingerprinting / browser-mimicry changes re-applied on top)
+- `./qpack` github.com/quic-go/qpack v0.6.0
+- `./webtransport` github.com/quic-go/webtransport-go v0.12.0 (with the fork's fingerprinting / browser-mimicry changes re-applied on top)
+- `./webtransport/httpsfv` github.com/dunglas/httpsfv 4cd96cab33c4a28ca20f9a9a92d43ce85a9bf7ad
+
+ > changes from github.com/pagpeter/quic-go v0.0.0-20260120153640-0de4e3b8377b are ported
