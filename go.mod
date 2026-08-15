@@ -3,8 +3,8 @@ module github.com/malivvan/quic
 go 1.26.5
 
 require (
-	github.com/malivvan/http v0.0.0-20260815111906-e090c71ad0fb
-	github.com/malivvan/tls v0.0.0-20260815111216-abdfc7757acf
+	github.com/malivvan/http v1.0.0
+	github.com/malivvan/tls v1.0.0
 	github.com/quic-go/go-ossfuzz-seeds v0.1.0
 	github.com/stretchr/testify v1.11.1
 	go.uber.org/mock v0.6.0
