@@ -1,4 +1,4 @@
-# quic-go
+# quic [![godoc](https://godoc.org/github.com/malivvan/quic?status.svg)](https://godoc.org/github.com/malivvan/quic) ![test](https://github.com/malivvan/quic/workflows/test/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/malivvan/quic/badge.svg?branch=master)](https://coveralls.io/github/malivvan/quic?branch=master) [![Release](https://img.shields.io/github/v/release/malivvan/quic.svg?sort=semver)](https://github.com/malivvan/quic/releases/latest) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 quic-go is an implementation of the QUIC protocol ([RFC 9000](https://datatracker.ietf.org/doc/html/rfc9000), [RFC 9001](https://datatracker.ietf.org/doc/html/rfc9001), [RFC 9002](https://datatracker.ietf.org/doc/html/rfc9002)) in Go. It has support for HTTP/3 ([RFC 9114](https://datatracker.ietf.org/doc/html/rfc9114)), including QPACK ([RFC 9204](https://datatracker.ietf.org/doc/html/rfc9204)) and HTTP Datagrams ([RFC 9297](https://datatracker.ietf.org/doc/html/rfc9297)).
 
