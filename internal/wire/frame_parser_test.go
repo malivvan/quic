@@ -741,7 +741,7 @@ func TestFrameParserAllocs(t *testing.T) {
 				DataLenPresent: true,
 			})
 		}
-		require.Zero(t, testFrameParserAllocs(t, frames))
+		checkFrameParserAllocs(t, frames)
 	})
 
 	t.Run("ACK", func(t *testing.T) {
@@ -758,8 +758,31 @@ func TestFrameParserAllocs(t *testing.T) {
 				ECNCE:     uint64(10 + i),
 			})
 		}
-		require.Zero(t, testFrameParserAllocs(t, frames))
+		checkFrameParserAllocs(t, frames)
 	})
+}
+
+// checkFrameParserAllocs asserts that parsing the given frames does not allocate.
+//
+// In a regular build, parsing must be allocation-free (require.Zero).
+//
+// Under the race detector this guarantee cannot hold: sync.Pool.Put deliberately
+// drops roughly a quarter of all items when the race detector is enabled
+// ("Randomly drop x on floor" in go/src/sync/pool.go) so that pool reuse stays
+// race-sound. The dropped items are then re-allocated by pool.New on the next
+// Get, which shows up as ~4-5 allocs/run for the 10 STREAM frames parsed below
+// (2 allocs per dropped item: the StreamFrame and its 64 KiB data buffer).
+// The race detector therefore doesn't allow us to verify zero allocations, but
+// we still assert that the number of allocations stays far below the ~10
+// allocs/run that a single allocation per parsed frame would add, so that
+// regressions in the parse path are still caught in race mode.
+func checkFrameParserAllocs(t *testing.T, frames []Frame) {
+	allocs := testFrameParserAllocs(t, frames)
+	if raceEnabled {
+		require.Less(t, allocs, 10.0)
+		return
+	}
+	require.Zero(t, allocs)
 }
 
 func testFrameParserAllocs(t *testing.T, frames []Frame) float64 {
